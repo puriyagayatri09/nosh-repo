@@ -42,15 +42,15 @@ const menuData = [
             "https://images.unsplash.com/photo-1546833999-b9f581a1996d?auto=format&fit=crop&w=800&q=85"
     },
 
-    {
-        id: 5,
+  {
+    id: 5,
     name: "Chicken Biryani",
-        category: "Lunch",
-        price: 100,
-        stock: 25,
+    category: "Lunch",
+    price: 100,
+    stock: 25,
     image:
-         "https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=800&q=85"
-    },
+        "https://images.unsplash.com/photo-1589302168068-964664d93dc0?auto=format&fit=crop&w=800&q=85"
+},
 
     {
         id: 6,
