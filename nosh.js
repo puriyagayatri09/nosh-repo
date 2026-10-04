@@ -1,28 +1,22 @@
-/* =====================================================
-   NOSH - SMART CANTEEN
-   Updated Human-Made UI + Functionality
-   ===================================================== */
 
-
-/* ================= MENU DATA ================= */
 
 const menuData = [
 
     {
         id: 1,
         name: "Idli",
-        category: "Breakfast",
+       category: "Breakfast",
         price: 30,
-        stock: 50,
+    stock: 50,
         image:
             "https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=800&q=85"
     },
 
     {
         id: 2,
-        name: "Dosa",
+       name: "Dosa",
         category: "Breakfast",
-        price: 40,
+           price: 40,
         stock: 35,
         image:
             "https://images.unsplash.com/photo-1668236543090-82eba5ee5976?auto=format&fit=crop&w=800&q=85"
@@ -32,8 +26,8 @@ const menuData = [
         id: 3,
         name: "Upma",
         category: "Breakfast",
-        price: 35,
-        stock: 30,
+        price: 35,  
+           stock: 30,
         image:
             "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=85"
     },
@@ -50,12 +44,12 @@ const menuData = [
 
     {
         id: 5,
-        name: "Chicken Biryani",
+    name: "Chicken Biryani",
         category: "Lunch",
         price: 100,
         stock: 25,
-        image:
-            "https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=800&q=85"
+    image:
+         "https://images.unsplash.com/photo-1563379091339-03246963d51a?auto=format&fit=crop&w=800&q=85"
     },
 
     {
@@ -63,7 +57,7 @@ const menuData = [
         name: "Fried Rice",
         category: "Lunch",
         price: 80,
-        stock: 30,
+    stock: 30,
         image:
             "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=85"
     },
@@ -71,10 +65,10 @@ const menuData = [
     {
         id: 7,
         name: "Samosa",
-        category: "Snacks",
-        price: 20,
+        category: "Snacks",   
+             price: 20,
         stock: 45,
-        image:
+    image:
             "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85"
     },
 
@@ -83,6 +77,7 @@ const menuData = [
         name: "Sandwich",
         category: "Snacks",
         price: 50,
+    
         stock: 25,
         image:
             "https://images.unsplash.com/photo-1528735602780-2552fd46c7af?auto=format&fit=crop&w=800&q=85"
@@ -94,16 +89,16 @@ const menuData = [
         category: "Snacks",
         price: 30,
         stock: 30,
-        image:
+     image:
             "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=800&q=85"
     },
 
     {
         id: 10,
-        name: "Tea",
+      name: "Tea",
         category: "Drinks",
         price: 15,
-        stock: 80,
+       stock: 80,
         image:
             "https://images.unsplash.com/photo-1544787219-7f47ccb76574?auto=format&fit=crop&w=800&q=85"
     },
@@ -111,9 +106,9 @@ const menuData = [
     {
         id: 11,
         name: "Coffee",
-        category: "Drinks",
-        price: 20,
-        stock: 70,
+     category: "Drinks",
+      price: 20,
+     stock: 70,
         image:
             "https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=85"
     },
@@ -130,7 +125,16 @@ const menuData = [
 
 ];
 
+// Load saved menu stock from localStorage
+const savedStock = JSON.parse(
+    localStorage.getItem("noshStock")
+) || {};
 
+menuData.forEach(item => {
+    if (savedStock[item.id] !== undefined) {
+        item.stock = savedStock[item.id];
+    }
+});
 /* ================= CART ================= */
 
 let cart =
@@ -169,7 +173,7 @@ let inventory =
     };
 
 
-/* ================= ORDERS ================= */
+
 
 let orders =
     JSON.parse(
@@ -177,7 +181,7 @@ let orders =
     ) || [];
 
 
-/* ================= START ================= */
+
 
 document.addEventListener(
     "DOMContentLoaded",
@@ -252,15 +256,15 @@ function renderMenu(
 
                 <div class="text-center py-5">
 
-                    <i class="bi bi-search fs-1 text-secondary"></i>
+                   <i class="bi bi-search fs-1 text-secondary"></i>
 
-                    <h5 class="mt-3">
+        <h5 class="mt-3">
                         Nothing found
                     </h5>
 
-                    <p class="text-secondary">
+             <p class="text-secondary">
                         Try searching for another food item.
-                    </p>
+                 </p>
 
                 </div>
 
@@ -783,9 +787,6 @@ function removeFromCart(id) {
 }
 
 
-/* =====================================================
-   PLACE ORDER
-   ===================================================== */
 
 function placeOrder() {
 
@@ -862,8 +863,20 @@ function placeOrder() {
         }
 
     });
+    // Save updated menu stock
 
 
+// Save updated menu stock
+const stockData = {};
+
+menuData.forEach(item => {
+    stockData[item.id] = item.stock;
+});
+
+localStorage.setItem(
+    "noshStock",
+    JSON.stringify(stockData)
+);
     /* Inventory */
 
     updateInventory(
