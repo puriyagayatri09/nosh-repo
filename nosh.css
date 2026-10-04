@@ -94,6 +94,10 @@ section {
     color: var(--dark);
 }
 
+.brand-text {
+    font-weight: 800;
+    letter-spacing: -0.5px;
+}
 .brand-icon {
     width: 35px;
     height: 35px;
