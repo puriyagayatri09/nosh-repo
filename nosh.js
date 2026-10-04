@@ -122,7 +122,85 @@ const menuData = [
         image:
             "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=85"
     }
+{
+    id: 14,
+    name: "Pav Bhaji",
+    category: "Snacks",
+    price: 50,
+    stock: 30,
+    image:
+        "https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=85"
+},
 
+{
+    id: 15,
+    name: "Masala Vada",
+    category: "Snacks",
+    price: 25,
+    stock: 35,
+    image:
+        "https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id: 16,
+    name: "Paneer Fried Rice",
+    category: "Lunch",
+    price: 90,
+    stock: 25,
+    image:
+        "https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id: 17,
+    name: "Veg Pulao",
+    category: "Lunch",
+    price: 70,
+    stock: 30,
+    image:
+        "https://images.unsplash.com/photo-1596797038530-2c107229654b?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id: 18,
+    name: "Paneer Roll",
+    category: "Snacks",
+    price: 60,
+    stock: 25,
+    image:
+        "https://images.unsplash.com/photo-1626700051175-6818013e1d4f?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id: 19,
+    name: "Curd Rice",
+    category: "Lunch",
+    price: 45,
+    stock: 30,
+    image:
+        "https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id: 20,
+    name: "Mango Lassi",
+    category: "Drinks",
+    price: 40,
+    stock: 25,
+    image:
+        "https://images.unsplash.com/photo-1577805947697-89e18249d767?auto=format&fit=crop&w=800&q=85"
+},
+
+{
+    id: 21,
+    name: "Cold Coffee",
+    category: "Drinks",
+    price: 50,
+    stock: 25,
+    image:
+        "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?auto=format&fit=crop&w=800&q=85"
+}
 ];
 
 // Load saved menu stock from localStorage
