@@ -121,7 +121,7 @@ const menuData = [
         stock: 50,
         image:
             "https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=800&q=85"
-    }
+    },
 {
     id: 14,
     name: "Pav Bhaji",
