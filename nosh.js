@@ -340,17 +340,60 @@ function renderMenu(
                             </div>
 
 
-                            <button
-                                class="add-food-button"
-                                onclick="addToCart(${item.id})"
-                                ${item.stock <= 0 ? "disabled" : ""}
-                            >
+                            ${(() => {
 
-                                <i class="bi bi-plus-lg"></i>
+    const cartItem = cart.find(
+        cartProduct => cartProduct.id === item.id
+    );
 
-                                Add to order
+    const quantity = cartItem
+        ? cartItem.quantity
+        : 0;
 
-                            </button>
+    if (quantity > 0) {
+
+        return `
+            <div class="menu-quantity">
+
+                <button
+                    type="button"
+                    onclick="decreaseMenuQuantity(${item.id})"
+                >
+                    −
+                </button>
+
+                <span>
+                    ${quantity}
+                </span>
+
+                <button
+                    type="button"
+                    onclick="increaseMenuQuantity(${item.id})"
+                >
+                    +
+                </button>
+
+                <strong>
+                    ₹${item.price * quantity}
+                </strong>
+
+            </div>
+        `;
+
+    }
+
+    return `
+        <button
+            class="add-food-button"
+            onclick="addToCart(${item.id})"
+            ${item.stock <= 0 ? "disabled" : ""}
+        >
+            <i class="bi bi-plus-lg"></i>
+            Add to order
+        </button>
+    `;
+
+})()}
 
                         </div>
 
@@ -514,19 +557,80 @@ function addToCart(id) {
     }
 
 
+   saveCart();
+
+renderCart();
+
+updateCartCount();
+
+renderMenu();
+
+showToast(
+    `${product.name} added to your order.`
+);
+
+
+}
+/* ================= MENU QUANTITY ================= */
+
+function increaseMenuQuantity(id) {
+
+    const product = menuData.find(
+        item => item.id === id
+    );
+
+    const cartItem = cart.find(
+        item => item.id === id
+    );
+
+    if (!product || !cartItem) return;
+
+    if (cartItem.quantity >= product.stock) {
+
+        showToast(
+            "Maximum available quantity reached."
+        );
+
+        return;
+    }
+
+    cartItem.quantity++;
+
     saveCart();
 
     renderCart();
 
     updateCartCount();
 
-
-    showToast(
-        `${product.name} added to your order.`
-    );
-
+    renderMenu();
 }
 
+
+function decreaseMenuQuantity(id) {
+
+    const cartItem = cart.find(
+        item => item.id === id
+    );
+
+    if (!cartItem) return;
+
+    cartItem.quantity--;
+
+    if (cartItem.quantity <= 0) {
+
+        cart = cart.filter(
+            item => item.id !== id
+        );
+    }
+
+    saveCart();
+
+    renderCart();
+
+    updateCartCount();
+
+    renderMenu();
+}
 
 /* =====================================================
    SAVE CART
